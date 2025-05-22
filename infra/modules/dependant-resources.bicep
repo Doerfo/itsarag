@@ -132,7 +132,6 @@ param storageName string
   'Premium_LRS'
   'Premium_ZRS'
 ])
-
 @description('Storage SKU')
 param storageSkuName string = 'Standard_LRS'
 

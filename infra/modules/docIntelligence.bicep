@@ -1,4 +1,3 @@
-
 @description('Module to deploy Azure AI Services - Document Intelligence')
 param aiServicesDocIntelligence string
 
