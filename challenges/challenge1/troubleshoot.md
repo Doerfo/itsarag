@@ -30,3 +30,24 @@ statisticsEnabled: false
 ```
 
 This property is not supported in the current API version and will cause the deployment to fail.
+
+#### Cost Optimization Recommendation
+
+To reduce costs, consider scaling the Azure Cognitive Search units down to one. Running a single search unit costs approximately 67 CHF/month, compared to 605 CHF/month for nine units. Adjust the `sku.count` parameter in your Bicep or deployment configuration to set the number of search units:
+
+```bicep
+resource search 'Microsoft.Search/searchServices@2023-11-01' = {
+  name: aiSearchName
+  location: 'switzerlandnorth'
+  tags: tags
+  sku: {
+    name: 'basic'
+  }
+  properties: {
+    // ↓↓↓ Changed for cost optimization
+    replicaCount: 1
+    partitionCount: 1
+    // ↑↑↑
+  }
+}
+```
